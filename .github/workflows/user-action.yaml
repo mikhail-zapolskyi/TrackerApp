@@ -7,4 +7,4 @@ jobs:
           steps:
                - run: echo "Changes were made by:" ${{github.actor}}
                - run: echo "Name of the event triggered action:" ${{ github.event_name }}
-               - run: echo "Commit message:"" ${{ gihub.event.commits.head_commit.message}}
+               - run: echo "Commit message:" ${{ github.event.head_commit.message }}
