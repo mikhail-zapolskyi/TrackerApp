@@ -1,4 +1,4 @@
-name: Greet User Action
+name: User Action
 run-name: ${{ github.actor}} triggered ${{ github.event_name }}
 on: [push, pull_request]
 jobs:
@@ -6,5 +6,5 @@ jobs:
           runs-on: ubuntu-latest
           steps:
                - run: echo "Changes were made by:" ${{github.actor}}
-               - run: echo 'Name of the event triggered action:' ${{ github.event_name }}
-               - run: echo 'Name of the branch or tag that triggered the workflow run:' ${{ gihub.ref_name}}
+               - run: echo "Name of the event triggered action:" ${{ github.event_name }}
+               - run: echo "Commit message:"" ${{ gihub.event.commits.head_commit.message}}
