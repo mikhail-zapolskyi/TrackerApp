@@ -5,4 +5,6 @@ jobs:
      greet-user:
           runs-on: ubuntu-latest
           steps:
-               - run: echo "Hello" ${{github.actor}}
+               - run: echo "Changes were made by:" ${{github.actor}}
+               - run: echo 'Name of the event triggered action:' ${{ github.event_name }}
+               - run: echo 'Name of the branch or tag that triggered the workflow run:' ${{ gihub.ref_name}}
