@@ -1,0 +1,8 @@
+name: test
+run-name: ${{ github.actor}} in action.
+on: [pull_request, push]
+jobs:
+     greet-user:
+          runs-on: ubuntu-latest
+          steps:
+               - run: echo "Hello" ${{github.actor}}
