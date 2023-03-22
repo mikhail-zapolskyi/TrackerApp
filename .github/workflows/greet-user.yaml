@@ -1,6 +1,6 @@
 name: test
-run-name: ${{ github.actor}} in action on ${{ github.branch}}
-on: push
+run-name: ${{ github.actor}} in action on ${{ github.ref-name}}
+on: [push, pull_request]
 jobs:
      greet-user:
           runs-on: ubuntu-latest
