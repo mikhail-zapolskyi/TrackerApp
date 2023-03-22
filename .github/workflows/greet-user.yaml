@@ -1,5 +1,5 @@
-name: test
-run-name: ${{ github.actor}} in action on ${{ github.ref-name}}
+name: Greet User Action
+run-name: ${{ github.actor}} in action on ${{ ${{ inputs.deploy_target }}}}
 on: [push, pull_request]
 jobs:
      greet-user:
