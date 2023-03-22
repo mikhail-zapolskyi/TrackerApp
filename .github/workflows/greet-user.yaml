@@ -1,5 +1,5 @@
 name: test
-run-name: ${{ github.actor}} in action
+run-name: ${{ github.actor}} in action on ${{ github.branch}}
 on: push
 jobs:
      greet-user:
