@@ -1,0 +1,15 @@
+/test-node-server
+/job-tracker-app/node_modules
+
+# testing
+/job-tracker-app/coverage
+
+# production
+/job-tracker-app/build
+
+# misc
+/job-tracker-app/.env
+
+/job-tracker-app/npm-debug.log*
+/job-tracker-app/yarn-debug.log*
+/job-tracker-app/yarn-error.log*
