@@ -1,7 +1,5 @@
-using Project777.Repositories;
-using Project777.Repositories.Interfaces;
-using Project777.Service;
-using Project777.Service.Interfaces;
+using Project777.Services;
+using Project777.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
+
 builder.Services.AddScoped<IUserService, UserService>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

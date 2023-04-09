@@ -5,9 +5,7 @@ VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project777.API", "Project777.API\Project777.API.csproj", "{D15B2ECB-2CCA-4F40-8CF1-F532B1E11C06}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project777.Service", "Project777.Service\Project777.Service.csproj", "{7A8F4954-5210-4DBF-9F38-94869EA8AAA4}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project777.Repositories", "Project777.Repositories\Project777.Repositories.csproj", "{8885A6C1-1A3C-4362-8A91-EC24FA0D1D4E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project777.Services", "Project777.Service\Project777.Services.csproj", "{7A8F4954-5210-4DBF-9F38-94869EA8AAA4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project777.Models", "Project777.Models\Project777.Models.csproj", "{13DC9111-FD09-4724-BB42-D911A8199E41}"
 EndProject
@@ -25,10 +23,6 @@ Global
 		{7A8F4954-5210-4DBF-9F38-94869EA8AAA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A8F4954-5210-4DBF-9F38-94869EA8AAA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A8F4954-5210-4DBF-9F38-94869EA8AAA4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8885A6C1-1A3C-4362-8A91-EC24FA0D1D4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8885A6C1-1A3C-4362-8A91-EC24FA0D1D4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8885A6C1-1A3C-4362-8A91-EC24FA0D1D4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8885A6C1-1A3C-4362-8A91-EC24FA0D1D4E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{13DC9111-FD09-4724-BB42-D911A8199E41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{13DC9111-FD09-4724-BB42-D911A8199E41}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13DC9111-FD09-4724-BB42-D911A8199E41}.Release|Any CPU.ActiveCfg = Release|Any CPU
