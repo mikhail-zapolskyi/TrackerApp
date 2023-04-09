@@ -1,4 +1,4 @@
-namespace API
+namespace Project777.API
 {
     public class WeatherForecast
     {

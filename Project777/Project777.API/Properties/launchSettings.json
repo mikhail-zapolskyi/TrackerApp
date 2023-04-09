@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "API": {
+    "Project777.API": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",
@@ -8,7 +8,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "dotnetRunMessages": true,
-      "applicationUrl": "https://localhost:7048;http://localhost:5065"
+      "applicationUrl": "https://localhost:7123;http://localhost:5185"
     },
     "IIS Express": {
       "commandName": "IISExpress",
@@ -31,8 +31,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:60477",
-      "sslPort": 44358
+      "applicationUrl": "http://localhost:61824",
+      "sslPort": 44377
     }
   }
 }
