@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Project777.Models\Project777.Models.csproj" />
+    <ProjectReference Include="..\Project777.Repositories\Project777.Repositories.csproj" />
     <ProjectReference Include="..\Project777.Service\Project777.Services.csproj" />
   </ItemGroup>
 

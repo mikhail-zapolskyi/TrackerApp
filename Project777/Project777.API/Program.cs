@@ -1,3 +1,5 @@
+using Project777.Repositories;
+using Project777.Repositories.Interfaces;
 using Project777.Services;
 using Project777.Services.Interfaces;
 
@@ -9,6 +11,7 @@ builder.Services.AddControllers();
 
 
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
