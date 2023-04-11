@@ -399,3 +399,6 @@ appsettings.Development.json
 ## User Files
 ##
 */**/.suo
+*/**/*/.suo
+*/**/*/*/.suo
+
