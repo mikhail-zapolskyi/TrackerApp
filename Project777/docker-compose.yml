@@ -1,0 +1,32 @@
+version: '3.4'
+
+services:
+  project777.api:
+    image: ${DOCKER_REGISTRY-}project777api
+    container_name: "project777.api"
+    environment:
+    - ConnectionStrings__DefaultConnection=Server=project777.db;Database=project777;User Id=dbuser;password=dbpassword
+    build:
+      context: .
+      dockerfile: Project777.API/Dockerfile
+    ports:
+      - '35333:80'
+      - '35334:443'
+    depends_on:
+      - project777.db
+
+  project777.db:
+    restart: on-failure
+    image: "postgis/postgis:14-3.2-alpine"
+    container_name: "project777.db"
+    environment:
+    - POSTGRES_USER=dbuser
+    - POSTGRES_PASSWORD=dbpassword
+    - POSTGRES_DB=project777
+    volumes:
+    - project777-db:/var/lib/postgresql/data
+    ports:
+    - "35777:5432"
+volumes:
+    project777-db:
+

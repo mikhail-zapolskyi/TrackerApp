@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using Project777.Repositories;
 using Project777.Repositories.Interfaces;
 using Project777.Services;
@@ -8,6 +9,17 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+//Setup the database using the ApplicationDbContext
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseNpgsql( //connect to postgres db
+        builder.Configuration.GetConnectionString("DefaultConnection"),
+        npgsqlOptions =>
+        {
+            //configure what project we want to store our Code-First Migration in
+            npgsqlOptions.MigrationsAssembly("Project777.Repositories");
+        }
+    ));
 
 
 builder.Services.AddScoped<IUserService, UserService>();
