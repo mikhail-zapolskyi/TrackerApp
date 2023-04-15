@@ -9,8 +9,10 @@ const Profile = () => {
       }, [])
     async function callBackendAPI(){
         const jwtToken = await getAccessTokenSilently();
+        //const jwtToken = process.env.REACT_APP_JOB_TRACKER_APP_AUTH0_JWT
+        console.log(jwtToken)
         try{
-            await fetch('http://localhost:8000',{
+            await fetch('http://localhost:8000/',{
                 headers:{
                     authorization: `Bearer ${jwtToken}`
                 }

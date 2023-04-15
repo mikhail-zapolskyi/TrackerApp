@@ -8,7 +8,7 @@ const App = () => {
   return (
     <Auth0Provider responseType = 'code' domain={domain} clientId= {clientId}    authorizationParams={{
       redirect_uri: window.location.origin,
-      audience: "https://dev-27tgvrxpujzp1vcw.us.auth0.com/api/v2/",
+      audience: "https://project777.com",
       scope: "openid profile email"
     }}>
       <LoginButton />
@@ -19,3 +19,5 @@ const App = () => {
 }
 
 export default App;
+
+
