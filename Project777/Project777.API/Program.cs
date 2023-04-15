@@ -1,4 +1,7 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using Project777.Repositories;
 using Project777.Repositories.Interfaces;
 using Project777.Services;
@@ -21,6 +24,22 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
         }
     ));
 
+// Setup authentication
+builder.Services.AddAuthentication(options =>
+                {
+                    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+                })
+                .AddJwtBearer(options =>
+                {
+                    options.Authority = builder.Configuration.GetSection("Auth0").GetValue<string>("Domain");
+                    options.Audience = builder.Configuration.GetSection("Auth0").GetValue<string>("Audience");
+                    options.RequireHttpsMetadata = false;
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        RoleClaimType = "http://schemas.project777.com/roles"
+                    };
+                });
+
 
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
@@ -40,6 +59,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
