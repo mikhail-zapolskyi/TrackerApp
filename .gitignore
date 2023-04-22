@@ -381,10 +381,6 @@ MigrationBackup/
 FodyWeavers.xsd
 
 
-#
-## docker compose
-##
-docker-compose.override.yml
 
 #
 ## AWS SDK
