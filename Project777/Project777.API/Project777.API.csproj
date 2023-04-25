@@ -33,4 +33,7 @@
     <ProjectReference Include="..\Project777.Service\Project777.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Remove="appsettings.development.json" />
+  </ItemGroup>
 </Project>
