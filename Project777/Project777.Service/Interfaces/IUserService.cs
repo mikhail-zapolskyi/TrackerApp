@@ -9,6 +9,6 @@ namespace Project777.Services.Interfaces
 {
     public interface IUserService
     {
-       public Task<UserVM> Create(CreateUserVM userAdd);
+       public Task<UserVM> Create(CreateUserVM userAdd, string userId);
     }
 }
