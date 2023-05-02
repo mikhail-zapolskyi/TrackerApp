@@ -15,21 +15,22 @@ namespace Project777.Services
            _userRepository = userRepository;
         }
 
-        public async Task<UserVM> Create(CreateUserVM userAdd)
+        public async Task<UserVM> Create(CreateUserVM userAdd, string userId)
         {
             var userEntity = new User()
             {
+                Id = userId,
                 Email= userAdd.Email,
                 FirstName= userAdd.FirstName,
                 LastName= userAdd.LastName,
             };
  
-            await _userRepository.Create(userEntity);
-            
-            //TODO fix the Create method so it returns the newly created user to pass to the frontend
-            //For now we are just passing back the data that the frontend passed to us
-                var model = new UserVM()
+           _userRepository.Create(userEntity);
+           await _userRepository.SaveChangesAsync();
+
+            var model = new UserVM()
             {
+                UserId= userId,
                 Email = userAdd.Email,
                 FirstName = userAdd.FirstName,
                 LastName = userAdd.LastName,

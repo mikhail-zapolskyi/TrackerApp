@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Project777.API.Helpers;
 using Project777.Models.ViewModels.Users;
 using Project777.Services.Interfaces;
 
@@ -22,11 +24,18 @@ namespace Project777.API.Controllers
         /// <param name="src"></param>
         /// <returns></returns>
         [HttpPost]
+        //[Authorize]
         public async Task<ActionResult<UserVM>> Create([FromBody] CreateUserVM src)
         {
             try
             {
-                var result = await _userService.Create(src);
+
+                // var userId = User.GetId();
+                var userId = "auth0testuser";
+                if (userId == null)
+                    return BadRequest("Invalid Request");
+
+                var result = await _userService.Create(src, userId);
 
                 return Ok(result);
             }

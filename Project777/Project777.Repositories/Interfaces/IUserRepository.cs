@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace Project777.Repositories.Interfaces
 {
-    public interface IUserRepository
+    public interface IUserRepository : IBaseRepository<User, string>
     {
-        Task Create(User user); 
 
     }
 }
