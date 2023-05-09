@@ -10,7 +10,7 @@ phases:
        - echo Build started on `date`
        - echo Building the Docker image ...
        - cd Project777
-       - docker build -t project777:api -f ./MarketPlaceForYou.Api/Dockerfile .
+       - docker build -t project777:api -f ./Project777.Api/Dockerfile .
        - docker tag project777:api $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/project777:api
   post_build:
     commands:
