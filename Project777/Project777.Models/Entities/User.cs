@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Project777.Models.Entities
 {
-    public class User
+    public class User : BaseEntity<string>
     {
-        public string Id { get; set; }
 
         public string FirstName { get; set; }
 

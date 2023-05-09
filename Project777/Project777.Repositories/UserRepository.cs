@@ -3,13 +3,13 @@ using Project777.Repositories.Interfaces;
 
 namespace Project777.Repositories
 {
-    public class UserRepository : IUserRepository
+    public class UserRepository : BaseRepository<User, string, ApplicationDbContext>, IUserRepository
     {
-        public async Task Create(User user)
+        private readonly ApplicationDbContext _context;
+        public UserRepository(ApplicationDbContext context)
+            : base(context)
         {
-            //TODO Create the User in the database
-
-            return ;  
+            _context = context;
         }
     }
 }

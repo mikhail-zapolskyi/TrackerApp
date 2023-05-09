@@ -11,7 +11,6 @@ services:
       dockerfile: Project777.API/Dockerfile
     ports:
       - '35333:80'
-      - '35334:443'
     depends_on:
       - project777.db
 
