@@ -28,15 +28,23 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Project777.Models\Project777.Models.csproj" />
-    <ProjectReference Include="..\Project777.Repositories\Project777.Repositories.csproj" />
-    <ProjectReference Include="..\Project777.Service\Project777.Services.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Remove="Middleware\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Middleware\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Project777.Repositories\Project777.Repositories.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+    <ProjectReference Include="..\Project777.Service\Project777.Services.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+    <ProjectReference Include="..\Project777.Shared\Project777.Shared.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+    <ProjectReference Include="..\Project777.Models\Project777.Models.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
   </ItemGroup>
 </Project>

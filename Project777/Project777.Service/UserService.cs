@@ -2,6 +2,7 @@
 using Project777.Models.ViewModels.Users;
 using Project777.Repositories.Interfaces;
 using Project777.Services.Interfaces;
+using Project777.Shared.Exceptions;
 
 namespace Project777.Services
 {
@@ -17,7 +18,7 @@ namespace Project777.Services
 
         public async Task<UserVM> Create(CreateUserVM userAdd, string userId)
         {
-            throw new Exception("Hello guys");
+            //throw new NotFoundException("Hello guys");
 
             var userEntity = new User()
             {

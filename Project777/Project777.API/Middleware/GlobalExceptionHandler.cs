@@ -3,6 +3,7 @@ using System.Net;
 using System.Text.Json;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
+using Project777.Shared.Exceptions;
 
 namespace Project777.API.Middleware
 {
@@ -33,7 +34,11 @@ namespace Project777.API.Middleware
 
 				switch (ex)
 				{
-					case DbUpdateException: res.StatusCode = (int)HttpStatusCode.InternalServerError;
+                    case NotFoundException e:
+						res.StatusCode = (int)HttpStatusCode.NotFound;
+                        errorMessage = e.Message;
+                        break;
+                    case DbUpdateException: res.StatusCode = (int)HttpStatusCode.InternalServerError;
 						errorMessage = "Sorry we are not able to complete your request, please try again later!";
 						break;
                     case PostgresException: res.StatusCode = (int)HttpStatusCode.InternalServerError;
