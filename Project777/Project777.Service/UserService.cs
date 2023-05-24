@@ -17,6 +17,8 @@ namespace Project777.Services
 
         public async Task<UserVM> Create(CreateUserVM userAdd, string userId)
         {
+            throw new Exception("Hello guys");
+
             var userEntity = new User()
             {
                 Id = userId,
@@ -38,5 +40,21 @@ namespace Project777.Services
 
             return model;
         }
+
+        public async Task DeleteUser(string id)
+        {
+            var user = await _userRepository.GetById(id);
+
+            if(user is null)
+                {
+                throw new Exception($"User with {id} not found");
+            }
+           
+            _userRepository.Delete(user);
+            await _userRepository.SaveChangesAsync();
+         
+            return;
+        }
+
     }
 }

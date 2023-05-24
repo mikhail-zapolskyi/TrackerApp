@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Project777.API.Middleware;
 using Project777.Repositories;
 using Project777.Repositories.Interfaces;
 using Project777.Services;
@@ -110,6 +111,7 @@ if (app.Environment.IsDevelopment())
 
 
 app.UseHttpsRedirection();
+app.UseMiddleware<GlobalExceptionHandler>();
 
 // Allow hosting of static web pages
 if (!app.Environment.IsProduction())

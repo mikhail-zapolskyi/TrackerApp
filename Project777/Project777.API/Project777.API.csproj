@@ -33,4 +33,10 @@
     <ProjectReference Include="..\Project777.Service\Project777.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Middleware\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Middleware\" />
+  </ItemGroup>
 </Project>

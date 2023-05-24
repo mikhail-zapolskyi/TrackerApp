@@ -24,28 +24,27 @@ namespace Project777.API.Controllers
         /// <param name="src"></param>
         /// <returns></returns>
         [HttpPost]
-        //[Authorize]
+        [Authorize]
         public async Task<ActionResult<UserVM>> Create([FromBody] CreateUserVM src)
         {
-            try
-            {
-
-                // var userId = User.GetId();
-                var userId = "auth0testuser";
+                var userId = User.GetId();
+                //var userId = "auth0testuser";
                 if (userId == null)
                     return BadRequest("Invalid Request");
 
                 var result = await _userService.Create(src, userId);
 
                 return Ok(result);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
         }
 
-
-
+        [HttpDelete]
+        [Authorize]
+        public async Task<ActionResult<UserVM>> DeleteUser(string id)
+        {
+            var userId = User.GetId();
+            await _userService.DeleteUser(id);
+            return Ok();
+            
+        }
     }
 }
