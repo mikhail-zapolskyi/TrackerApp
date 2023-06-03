@@ -27,8 +27,8 @@ namespace Project777.API.Controllers
         [Authorize]
         public async Task<ActionResult<UserVM>> Create([FromBody] CreateUserVM src)
         {
-                var userId = User.GetId();
-                //var userId = "auth0testuser";
+                //var userId = User.GetId();
+                var userId = "auth0testuser";
                 if (userId == null)
                     return BadRequest("Invalid Request");
 
