@@ -4,7 +4,6 @@ name: Push images to ECR and deploy on ELastic Beanstalk
 on:
  push:
   branches:
-  #  - main
   - main
    
 #JOBS
