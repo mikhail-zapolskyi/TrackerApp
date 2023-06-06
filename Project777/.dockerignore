@@ -21,5 +21,10 @@
 **/obj
 **/secrets.dev.yaml
 **/values.dev.yaml
+docker-compose.yml
+docker-compose.override.yml
+.vs
+docker-compose.dcproj
+buildspec.yml
 LICENSE
 README.md
