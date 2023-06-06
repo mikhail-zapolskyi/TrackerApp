@@ -16,6 +16,12 @@ jobs:
      uses: actions/checkout@v3
      with:
        path: .
+  
+   - name: Exclude files from build context
+     run: |
+      rm -rf Project777/docker-compose.yml
+      rm -rf Project777/docker-compose.override.yml
+      rm -rf Project777/buildspec.yml
      
    - name: Configure AWS credentials
      uses: aws-actions/configure-aws-credentials@v2
@@ -28,14 +34,6 @@ jobs:
      id: login-ecr
      uses: aws-actions/amazon-ecr-login@v1
 
-  #  - name: set up build context
-  #    uses: docker/build-push-action@v4
-  #    with:
-  #     context: ./Project777
-  #     file: ./Project777/Project777.API/Dockerfile
-  #     push: false
-  #     tags: job-tracker-backend
-
    - name: Build, tag and push backend image  
      run: |
       aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 994778164285.dkr.ecr.us-west-2.amazonaws.com
@@ -43,7 +41,6 @@ jobs:
       docker tag job-tracker-backend:latest 994778164285.dkr.ecr.us-west-2.amazonaws.com/job-tracker-backend:latest
       docker push 994778164285.dkr.ecr.us-west-2.amazonaws.com/job-tracker-backend:latest
    
-     
    - name: Install EB CLI
      run: |
       pip install awsebcli --upgrade --user
