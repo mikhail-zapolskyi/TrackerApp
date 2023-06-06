@@ -18,7 +18,7 @@ jobs:
    - name: set up build context
      uses: docker/build-push-action@v4
      with:
-       context: |
+       context: >-
          /Project777
          !docker-compose.yml
          !docker-compose.override.yml
