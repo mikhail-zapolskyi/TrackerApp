@@ -38,6 +38,7 @@ jobs:
    - name: Build, tag and push backend image  
      run: |
       aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 994778164285.dkr.ecr.us-west-2.amazonaws.com
+      pwd
       ls -al
       docker build -t job-tracker-backend -f Project777/Project777.API/Dockerfile Project777
       ls -al
