@@ -15,7 +15,7 @@ jobs:
    - name: Checkout files
      uses: actions/checkout@v3
      with:
-       path: ./Project777
+       path: .
   
    - name: Exclude files from build context
      run: |
