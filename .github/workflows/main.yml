@@ -18,12 +18,7 @@ jobs:
    - name: set up build context
      uses: docker/build-push-action@v4
      with:
-       context: >-
-         /Project777
-         !docker-compose.yml
-         !docker-compose.override.yml
-         !buildspec.yml
-         !docker-compose.dcproj
+       context: ./Project777
      
    - name: Configure AWS credentials
      uses: aws-actions/configure-aws-credentials@v2
