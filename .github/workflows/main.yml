@@ -15,13 +15,14 @@ jobs:
    - name: Checkout files
      uses: actions/checkout@v3
      with:
-       path: .
+       path: ./Project777
   
    - name: Exclude files from build context
      run: |
-      rm -rf Project777/docker-compose.yml
-      rm -rf Project777/docker-compose.override.yml
-      rm -rf Project777/buildspec.yml
+      rm -rf docker-compose.yml
+      rm -rf docker-compose.override.yml
+      rm -rf buildspec.yml
+      rm -rf docker-compose.dcproj
      
    - name: Configure AWS credentials
      uses: aws-actions/configure-aws-credentials@v2
@@ -37,7 +38,9 @@ jobs:
    - name: Build, tag and push backend image  
      run: |
       aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 994778164285.dkr.ecr.us-west-2.amazonaws.com
-      docker build -t job-tracker-backend -f ./Project777/Project777.API/Dockerfile ./Project777
+      ls -al
+      docker build -t job-tracker-backend -f ./Project777.API/Dockerfile .
+      ls -al
       docker tag job-tracker-backend:latest 994778164285.dkr.ecr.us-west-2.amazonaws.com/job-tracker-backend:latest
       docker push 994778164285.dkr.ecr.us-west-2.amazonaws.com/job-tracker-backend:latest
    
