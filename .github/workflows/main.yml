@@ -40,7 +40,7 @@ jobs:
       aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 994778164285.dkr.ecr.us-west-2.amazonaws.com
       pwd
       ls -al
-      ls ./Project777/Project777.API/
+      ls ./Project777
       docker build -t job-tracker-backend -f ./Project777/Project777.API/Dockerfile .
       ls -al
       docker tag job-tracker-backend:latest 994778164285.dkr.ecr.us-west-2.amazonaws.com/job-tracker-backend:latest
