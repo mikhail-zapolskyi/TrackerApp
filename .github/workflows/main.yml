@@ -14,6 +14,8 @@ jobs:
   steps:
    - name: Checkout files
      uses: actions/checkout@v3
+     with:
+       path: .
      
    - name: Configure AWS credentials
      uses: aws-actions/configure-aws-credentials@v2
@@ -26,17 +28,18 @@ jobs:
      id: login-ecr
      uses: aws-actions/amazon-ecr-login@v1
 
-   - name: set up build context
-     uses: docker/build-push-action@v4
-     with:
-      context: ./Project777
-      file: ./Project777/Project777.API/Dockerfile
-      push: false
-      tags: job-tracker-backend
+  #  - name: set up build context
+  #    uses: docker/build-push-action@v4
+  #    with:
+  #     context: ./Project777
+  #     file: ./Project777/Project777.API/Dockerfile
+  #     push: false
+  #     tags: job-tracker-backend
 
    - name: Build, tag and push backend image  
      run: |
       aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 994778164285.dkr.ecr.us-west-2.amazonaws.com
+      docker build -t job-tracker-backend -f ./Project777/Project777.API/Dockerfile ./Project777
       docker tag job-tracker-backend:latest 994778164285.dkr.ecr.us-west-2.amazonaws.com/job-tracker-backend:latest
       docker push 994778164285.dkr.ecr.us-west-2.amazonaws.com/job-tracker-backend:latest
    

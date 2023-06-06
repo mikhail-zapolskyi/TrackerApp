@@ -1,0 +1,6 @@
+.vs export-ignore
+job-tracker-app export-ignore
+Project777/docker-compose.yml export-ignore
+Project777/docker-compose,override.yml export-ignore
+Project777/docker-compose.dcproj export-ignore
+Project777/buildspec.yml export-ignore
