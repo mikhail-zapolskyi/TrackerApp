@@ -22,6 +22,7 @@ jobs:
       rm -rf Project777/docker-compose.yml
       rm -rf Project777/docker-compose.override.yml
       rm -rf Project777/buildspec.yml
+      cp Project777/Project777.API/Dockerfile .
      
    - name: Configure AWS credentials
      uses: aws-actions/configure-aws-credentials@v2
