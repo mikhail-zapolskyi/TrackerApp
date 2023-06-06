@@ -19,7 +19,7 @@ jobs:
      uses: docker/build-push-action@v4
      with:
        context: ./Project777
-       file: ./Project777/Project777.API
+       file: ./Project777/Project777.API/Dockerfile
      
    - name: Configure AWS credentials
      uses: aws-actions/configure-aws-credentials@v2
