@@ -13,7 +13,17 @@ jobs:
   runs-on: ubuntu-latest
   steps:
    - name: Checkout files
-     uses: actions/checkout@v2
+     uses: actions/checkout@v3
+
+   - name: set up build context
+     uses: docker/build-push-action@v4
+     with:
+       context: |
+         /Project777
+         !docker-compose.yml
+         !docker-compose.override.yml
+         !buildspec.yml
+         !docker-compose.dcproj
      
    - name: Configure AWS credentials
      uses: aws-actions/configure-aws-credentials@v2
@@ -29,7 +39,7 @@ jobs:
    - name: Build, tag and push backend image
      run: |
       aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 994778164285.dkr.ecr.us-west-2.amazonaws.com
-      docker build -t job-tracker-backend -f ./Project777/Project777.API/Dockerfile ./Project777/
+      docker build -t job-tracker-backend -f ./Project777.API/Dockerfile .
       docker tag job-tracker-backend:latest 994778164285.dkr.ecr.us-west-2.amazonaws.com/job-tracker-backend:latest
       docker push 994778164285.dkr.ecr.us-west-2.amazonaws.com/job-tracker-backend:latest
    
