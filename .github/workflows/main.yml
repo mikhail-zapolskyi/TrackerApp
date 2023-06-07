@@ -38,7 +38,7 @@ jobs:
       # rm -rf ./Project777/docker-compose.dcproj
       ls ./Project777
       docker build -t job-tracker-backend -f ./Project777/Project777.API/Dockerfile ./Project777
-      ls -al
+      ls ./Project777
       docker tag job-tracker-backend:latest 994778164285.dkr.ecr.us-west-2.amazonaws.com/job-tracker-backend:latest
       docker push 994778164285.dkr.ecr.us-west-2.amazonaws.com/job-tracker-backend:latest
    
