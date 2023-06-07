@@ -18,4 +18,5 @@ WORKDIR /app
 COPY --from=publish /app/publish .
 RUN ls -al
 RUN pwd
+EXPOSE 8080
 ENTRYPOINT ["dotnet", "Project777.API.dll"]
