@@ -17,5 +17,5 @@ FROM mcr.microsoft.com/dotnet/aspnet:7.0
 WORKDIR /app
 COPY --from=publish /app/publish .
 RUN ls -al
-RUN ls /app/publish
+RUN pwd
 ENTRYPOINT ["dotnet", "Project777.API.dll"]
