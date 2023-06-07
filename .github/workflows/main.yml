@@ -39,6 +39,6 @@ jobs:
         
    - name: Deploy Backend to Elastic Beanstalk
      run: |
-        eb setenv ConnectionStrings__DefaultConnection=${{ secrets.ConnectionStrings__DefaultConnection }}
         eb init -r ${{ secrets.AWS_REGION }} -p docker jobtracker-app
+        eb setenv ConnectionStrings__DefaultConnection=${{ secrets.ConnectionStrings__DefaultConnection }}
         eb deploy Jobtracker-app-env
