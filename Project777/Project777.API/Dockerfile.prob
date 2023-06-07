@@ -1,18 +1,11 @@
 #See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
-FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
+FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /app
-EXPOSE 80
-EXPOSE 443
-
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-WORKDIR /app
-COPY . .
+COPY . ./
 RUN rm -rf .DS_Store
 RUN ls -al
 RUN ls Project777.API/
-COPY ["Project777.API/Dockerfile.prob", "./"]
-RUN mv Dockerfile.prob Dockerfile
 RUN dotnet restore "Project777.API/Project777.API.csproj"
 RUN ls -al
 RUN dotnet build "/app/Project777.API/Project777.API.csproj" -c Release -o /app/build
@@ -20,7 +13,9 @@ RUN dotnet build "/app/Project777.API/Project777.API.csproj" -c Release -o /app/
 FROM build AS publish
 RUN dotnet publish "/app/Project777.API/Project777.API.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
-FROM base AS final
+FROM mcr.microsoft.com/dotnet/aspnet:7.0
 WORKDIR /app
 COPY --from=publish /app/publish .
+RUN ls -al
+RUN ls /app/publish
 ENTRYPOINT ["dotnet", "Project777.API.dll"]
