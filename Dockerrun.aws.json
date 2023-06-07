@@ -1,5 +1,5 @@
 {
-  "AWSEBDockerrunVersion": "3",
+  "AWSEBDockerrunVersion": "1",
   "Image": {
     "Name": "994778164285.dkr.ecr.us-west-2.amazonaws.com/job-tracker-backend:latest",
     "Update": "true"
