@@ -6,8 +6,7 @@ EXPOSE 80
 EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-WORKDIR /src
-COPY . .
+COPY . /app
 RUN rm -rf .DS_Store
 RUN ls -al
 RUN ls Project777.API/
@@ -15,7 +14,7 @@ COPY ["Project777.API/Dockerfile.prob", "./"]
 RUN mv Dockerfile.prob Dockerfile
 RUN dotnet restore "Project777.API/Project777.API.csproj"
 RUN ls -al
-WORKDIR "/src/Project777.API"
+WORKDIR "/app/Project777.API"
 RUN dotnet build "Project777.API.csproj" -c Release -o /app/build
 
 FROM build AS publish
