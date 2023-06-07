@@ -11,6 +11,7 @@ COPY ["Project777.API/Project777.API.csproj", "Project777.API/"]
 RUN dotnet restore "Project777.API/Project777.API.csproj"
 RUN ls -al
 COPY . .
+RUN ls -al
 WORKDIR "/src/Project777.API"
 RUN dotnet build "Project777.API.csproj" -c Release -o /app/build
 
