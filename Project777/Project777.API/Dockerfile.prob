@@ -6,7 +6,8 @@ EXPOSE 80
 EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-COPY . /app
+WORKDIR /app
+COPY . .
 RUN rm -rf .DS_Store
 RUN ls -al
 RUN ls Project777.API/
