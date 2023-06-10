@@ -24,7 +24,7 @@ namespace Project777.API.Controllers
         /// <param name="src"></param>
         /// <returns></returns>
         [HttpPost]
-        [Authorize]
+        //[Authorize]
         public async Task<ActionResult<UserVM>> Create([FromBody] CreateUserVM src)
         {
                 //var userId = User.GetId();
@@ -38,10 +38,10 @@ namespace Project777.API.Controllers
         }
 
         [HttpDelete]
-        [Authorize]
+        //[Authorize]
         public async Task<ActionResult<UserVM>> DeleteUser(string id)
         {
-            var userId = User.GetId();
+            //var userId = User.GetId();
             await _userService.DeleteUser(id);
             return Ok();
             
