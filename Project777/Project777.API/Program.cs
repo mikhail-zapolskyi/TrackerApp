@@ -104,13 +104,12 @@ using (var scope = app.Services.CreateScope())
 
 // Configure the HTTP request pipeline.
 // Allow hosting of static web pages
-if (!app.Environment.IsProduction())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-    app.UseDefaultFiles();  // Allows index.html, index.js, etc. files to be opened without specifying their name in the url
-    app.UseStaticFiles();
-}
+
+
+app.UseSwagger();
+app.UseSwaggerUI();
+app.UseDefaultFiles();  // Allows index.html, index.js, etc. files to be opened without specifying their name in the url
+app.UseStaticFiles();
 
 
 app.UseHttpsRedirection();
