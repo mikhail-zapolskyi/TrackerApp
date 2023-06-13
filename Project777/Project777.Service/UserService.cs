@@ -38,5 +38,22 @@ namespace Project777.Services
 
             return model;
         }
+
+        public async Task<UserVM> Update(UpdateUserVM userUpdate)
+        {
+            var userEntity = await User.GetId(userUpdate.Id);
+
+            userEntity.Email = userUpdate.Email;
+            userEntity.FirstName = userUpdate.FirstName;
+            userEntity.LastName = userUpdate.LastName;
+            _userRepository.Update(userEntity);
+            await _userRepository.SaveChangesAsync();
+            return userEntity;
+
+
+
+        }
+
+
     }
 }

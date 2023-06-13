@@ -44,8 +44,23 @@ namespace Project777.API.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        [HttpPut()]
+        public async Task<ActionResult<UserVM>> Update([FromBody] UpdateUserVM data)
+        {
+            try
+            {
+                // update user from the service
+                var result = await _userService.Update(data);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
 
 
+
+        }
 
     }
 }
