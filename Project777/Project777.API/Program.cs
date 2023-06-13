@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Project777.API.Middleware;
 using Project777.Repositories;
 using Project777.Repositories.Interfaces;
 using Project777.Services;
@@ -102,21 +103,17 @@ using (var scope = app.Services.CreateScope())
 
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+// Allow hosting of static web pages
+
+
+app.UseSwagger();
+app.UseSwaggerUI();
+app.UseDefaultFiles();  // Allows index.html, index.js, etc. files to be opened without specifying their name in the url
+app.UseStaticFiles();
 
 
 app.UseHttpsRedirection();
-
-// Allow hosting of static web pages
-if (!app.Environment.IsProduction())
-{
-    app.UseDefaultFiles();  // Allows index.html, index.js, etc. files to be opened without specifying their name in the url
-    app.UseStaticFiles();   // Enables the app to host .html pages, etc.
-}
+app.UseMiddleware<GlobalExceptionHandler>();
 
 app.UseAuthentication();
 app.UseAuthorization();

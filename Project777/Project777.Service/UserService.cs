@@ -2,6 +2,7 @@
 using Project777.Models.ViewModels.Users;
 using Project777.Repositories.Interfaces;
 using Project777.Services.Interfaces;
+using Project777.Shared.Exceptions;
 
 namespace Project777.Services
 {
@@ -17,6 +18,8 @@ namespace Project777.Services
 
         public async Task<UserVM> Create(CreateUserVM userAdd, string userId)
         {
+            //throw new NotFoundException("Hello guys");
+
             var userEntity = new User()
             {
                 Id = userId,
@@ -38,6 +41,22 @@ namespace Project777.Services
 
             return model;
         }
+
+        public async Task DeleteUser(string id)
+        {
+            var user = await _userRepository.GetById(id);
+
+            if(user is null)
+                {
+                throw new Exception($"User with {id} not found");
+            }
+           
+            _userRepository.Delete(user);
+            await _userRepository.SaveChangesAsync();
+         
+            return;
+        }
+
 
         public async Task<UserVM> Update(UpdateUserVM userUpdate)
         {

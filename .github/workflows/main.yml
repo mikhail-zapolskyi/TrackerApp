@@ -1,0 +1,44 @@
+#NAME
+name: Push images to ECR and deploy on ELastic Beanstalk
+#EVENT
+on:
+ push:
+  branches:
+  - main
+   
+#JOBS
+jobs:
+ build_and_push_docker_images:
+  name: build docker images
+  runs-on: ubuntu-latest
+  steps:
+   - name: Checkout files
+     uses: actions/checkout@v3
+     
+   - name: Configure AWS credentials
+     uses: aws-actions/configure-aws-credentials@v2
+     with:
+      aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      aws-region: ${{ secrets.AWS_REGION }}
+
+   - name: Login to AWS ECR
+     id: login-ecr
+     uses: aws-actions/amazon-ecr-login@v1
+
+   - name: Build, tag and push backend image  
+     run: |
+      aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 994778164285.dkr.ecr.us-west-2.amazonaws.com
+      docker build -t job-tracker-backend -f ./Project777/Project777.API/Dockerfile.prob ./Project777
+      docker tag job-tracker-backend:latest 994778164285.dkr.ecr.us-west-2.amazonaws.com/job-tracker-backend:latest
+      docker push 994778164285.dkr.ecr.us-west-2.amazonaws.com/job-tracker-backend:latest
+   
+   - name: Install EB CLI
+     run: |
+      pip install awsebcli --upgrade --user
+        
+   - name: Deploy Backend to Elastic Beanstalk
+     run: |
+        eb init -r ${{ secrets.AWS_REGION }} -p docker jobtracker-app
+        eb setenv ConnectionStrings__DefaultConnection=${{ secrets.ConnectionStrings__DefaultConnection }}
+        eb deploy Jobtracker-app-env
