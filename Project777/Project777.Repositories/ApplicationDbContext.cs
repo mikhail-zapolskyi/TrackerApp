@@ -18,5 +18,7 @@ namespace Project777.Repositories
         public DbSet<User> Users => Set<User>();
         public DbSet<JobCategory> JobCategories => Set<JobCategory>();
 
+        public DbSet<Job> Jobs => Set<Job>();
+
     }
 }
