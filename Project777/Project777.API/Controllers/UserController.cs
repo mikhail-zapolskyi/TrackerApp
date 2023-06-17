@@ -24,30 +24,50 @@ namespace Project777.API.Controllers
         /// <param name="src"></param>
         /// <returns></returns>
         [HttpPost]
-        //[Authorize]
+        [Authorize]
         public async Task<ActionResult<UserVM>> Create([FromBody] CreateUserVM src)
         {
-                //var userId = User.GetId();
-                var userId = "auth0testuser";
-                if (userId == null)
-                    return BadRequest("Invalid Request");
+            var userId = User.GetId();
+            //var userId = "auth0testuser";
+            if (userId == null)
+                return BadRequest("Invalid Request");
 
-                var result = await _userService.Create(src, userId);
+            var result = await _userService.Create(src, userId);
 
-                return Ok(result);
+            return Ok(result);
         }
 
+        /// <summary>
+        /// Deletes the signed in user
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete]
-        //[Authorize]
-        public async Task<ActionResult<UserVM>> DeleteUser(string id)
+        [Authorize]
+        public async Task<ActionResult> DeleteUser(string id)
         {
-            //var userId = User.GetId();
+            // TODO: what happens to user's data and the auth0 
+
+            var userId = User.GetId();
             await _userService.DeleteUser(id);
             return Ok();
-            
+
         }
 
+        [HttpPut]
+        [Authorize]
+        public async Task<ActionResult<UserVM>> Update([FromBody] UpdateUserVM data )
+        {
+            var userId = User.GetId();
+            //var userId = "auth0testuser";
+            var result = await _userService.Update(data, userId);
+            return Ok(result);
 
+
+
+
+
+        }
 
     }
 }

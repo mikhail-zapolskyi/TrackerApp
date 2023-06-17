@@ -12,5 +12,8 @@ namespace Project777.Services.Interfaces
         public Task<UserVM> Create(CreateUserVM userAdd, string userId);
 
         public Task DeleteUser(string id);
+
+        public Task<UserVM> Update(UpdateUserVM data, string userId);
+      
     }
 }

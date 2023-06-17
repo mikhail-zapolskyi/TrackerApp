@@ -21,10 +21,6 @@ namespace Project777.Models.ViewModels.Users
         [Required]
         public string LastName { get; set; } = string.Empty;
 
-        /// <summary>
-        /// user's email
-        /// </summary>
-        [Required]
-        public string Email { get; set; } = string.Empty;
+
     }
 }
