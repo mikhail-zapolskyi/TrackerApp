@@ -1,25 +1,22 @@
-﻿using System;
+﻿using Project777.Models.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project777.Models.Entities
+namespace Project777.Models.ViewModels.Jobs
 {
-    public class Job: BaseEntity<Guid>
+    public class CreateJobVM
     {
-        public string UserId { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Company { get; set; } = string.Empty;
 
-        public User User { get; set;}
-        public string Company { get; set; }
-
-        public string JobTitle { get; set; }
-
+        public string JobTitle { get; set; } = string.Empty;
 
         public Guid JobCategoryId { get; set; }
-
-        // This is a navigation property
-        public JobCategory JobCategory { get; set; }
         
         public DateOnly? ClosingDate { get; set; }
 
@@ -30,6 +27,5 @@ namespace Project777.Models.Entities
         public string? Notes { get; set; }
 
         public DateTime CreatedAt { get; set; }
-
     }
 }
