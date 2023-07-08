@@ -10,7 +10,7 @@ namespace Project777.Services.Interfaces
 {
     public interface IJobCategoryService
     {
-        public Task<JobCategoryVM> Create(CreateJobCategoryVM jobCategoryAdd, string userId);
+        public Task<JobCategoryVM> Create(CreateJobCategoryVM jobCategoryAdd);
 
         //public Task DeleteUser(string id);
 

@@ -8,10 +8,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Project777.Services.Interfaces;
 
 namespace Project777.Services
 {
-    public class JobCategoryService
+    public class JobCategoryService : IJobCategoryService
     {
         private readonly IJobCategoryRepository _jobCategoryRepository;
 
@@ -20,22 +21,22 @@ namespace Project777.Services
             _jobCategoryRepository = jobCategoryRepository;
         }
 
-        public async Task<JobCategoryVM> Create(CreateJobCategoryVM jobCategoryAdd, string userId)
+        public async Task<JobCategoryVM> Create(CreateJobCategoryVM jobCategoryAdd)
         {
 
-            var JobCategoryEntity = new JobCategory()
+            var jobCategoryEntity = new JobCategory()
             {
-                Id = userId,
+                
                 Name = jobCategoryAdd.Name,
             };
 
-            _jobCategoryRepository.Create(JobCategoryEntity);
+            _jobCategoryRepository.Create(jobCategoryEntity);
             await _jobCategoryRepository.SaveChangesAsync();
 
             var model = new JobCategoryVM()
             {
-                Id = userId,
-                Name = jobCategoryAdd.Name,
+                Id = jobCategoryEntity.Id, 
+                Name = jobCategoryEntity.Name,
             };
 
             return model;

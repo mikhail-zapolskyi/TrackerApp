@@ -35,7 +35,7 @@ namespace Project777.API.Controllers
             if (userId == null)
                 return BadRequest("Invalid Request");
 
-            var result = await _jobCategoryService.Create(src, userId);
+            var result = await _jobCategoryService.Create(src);
 
             return Ok(result);
         }
