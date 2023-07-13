@@ -12,6 +12,8 @@ namespace Project777.Services.Interfaces
     {
         public Task<JobCategoryVM> Create(CreateJobCategoryVM jobCategoryAdd);
 
+        public Task<ICollection<JobCategoryVM>> GetAllCategories();
+
         //public Task DeleteUser(string id);
 
         //public Task<UserVM> Update(UpdateUserVM data, string userId);

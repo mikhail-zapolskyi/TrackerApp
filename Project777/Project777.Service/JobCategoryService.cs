@@ -42,5 +42,25 @@ namespace Project777.Services
             return model;
         }
 
+
+        public async Task<ICollection<JobCategoryVM>>GetAllCategories()
+        {
+
+            var categories =  await _jobCategoryRepository.GetAll();
+
+            List<JobCategoryVM> response = new List<JobCategoryVM>();
+
+            foreach (var category in categories)
+            {
+
+                var model = new JobCategoryVM()
+                {
+                    Id = category.Id,
+                    Name = category.Name,
+                };
+                response.Add(model);
+            }
+            return response;
+        }
     }
 }
