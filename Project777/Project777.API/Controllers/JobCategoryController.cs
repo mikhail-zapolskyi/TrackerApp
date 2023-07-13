@@ -31,7 +31,6 @@ namespace Project777.API.Controllers
         public async Task<ActionResult<JobCategoryVM>> Create([FromBody] CreateJobCategoryVM src)
         {
             var userId = User.GetId();
-            //var userId = "auth0testuser";
             if (userId == null)
                 return BadRequest("Invalid Request");
 
@@ -40,7 +39,19 @@ namespace Project777.API.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="src"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Authorize]
+        public async Task<ActionResult<ICollection<JobCategoryVM>>>GetAllCategories()
+        {
+            var result = await _jobCategoryService.GetAllCategories();
 
+            return Ok(result);
+        }
 
 
     }
