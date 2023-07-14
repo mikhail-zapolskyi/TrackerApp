@@ -8,12 +8,12 @@ namespace Project777.Models.Entities
 {
     public class Job: BaseEntity<Guid>
     {
-        public string UserId { get; set; }
+        public string UserId { get; set; } = string.Empty;
 
         public User User { get; set;}
-        public string Company { get; set; }
+        public string Company { get; set; } = string.Empty;
 
-        public string JobTitle { get; set; }
+        public string JobTitle { get; set; } = string.Empty;
 
 
         public Guid JobCategoryId { get; set; }
