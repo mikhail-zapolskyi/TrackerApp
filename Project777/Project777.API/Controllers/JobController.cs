@@ -25,15 +25,15 @@ namespace Project777.API.Controllers
         /// <returns></returns>
         [HttpPost]
         [Authorize]
-        public async Task<ActionResult<JobVM>> Create()
+        public async Task<ActionResult<JobVM>> Create([FromBody] CreateJobVM src)
         {
             var userId = User.GetId();
             if (userId == null)
                 return BadRequest("Invalid Request");
 
-            //var result = await _jobService.Create(src, userId);
+            var result = await _jobService.Create(src, userId);
 
-            return Ok(new JobVM());
+            return Ok(result);
         }
 
         [HttpGet]
