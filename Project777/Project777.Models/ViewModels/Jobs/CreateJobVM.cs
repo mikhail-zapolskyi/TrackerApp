@@ -25,7 +25,5 @@ namespace Project777.Models.ViewModels.Jobs
         public string? Referrer { get; set; }
 
         public string? Notes { get; set; }
-
-        public DateTime CreatedAt { get; set; }
     }
 }

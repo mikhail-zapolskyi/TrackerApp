@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using Project777.API.Helpers;
 using Project777.Models.ViewModels.JobCategories;
 using Project777.Models.ViewModels.Users;
-using Project777.Services;
 using Project777.Services.Interfaces;
 
 namespace Project777.API.Controllers
