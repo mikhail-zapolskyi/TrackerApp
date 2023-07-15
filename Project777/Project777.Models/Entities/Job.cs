@@ -21,7 +21,7 @@ namespace Project777.Models.Entities
         // This is a navigation property
         public JobCategory JobCategory { get; set; }
         
-        public DateOnly? ClosingDate { get; set; }
+        public DateTime? ClosingDate { get; set; }
 
         public string? HiringManager { get; set; }
 

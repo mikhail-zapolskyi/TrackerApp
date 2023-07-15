@@ -15,7 +15,7 @@ namespace Project777.Models.ViewModels.Jobs
 
         public Guid JobCategoryId { get; set; }
         
-        public DateOnly? ClosingDate { get; set; }
+        public DateTime? ClosingDate { get; set; }
 
         public string? HiringManager { get; set; }
 

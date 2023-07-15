@@ -10,5 +10,7 @@ namespace Project777.Services.Interfaces
     public interface IJobService
     {
         public Task<JobVM> Create(CreateJobVM jobAdd, string userId);
+
+        public Task<ICollection<JobVM>> GetAllJobs ();
     }
 }
