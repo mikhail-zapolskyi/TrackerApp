@@ -15,7 +15,7 @@ namespace Project777.Models.ViewModels.Jobs
         [Required]
         public string JobTitle { get; set; } = string.Empty;
 
-        public DateOnly ClosingDate { get; set; }
+        public DateTime? ClosingDate { get; set; }
 
         public string? HiringManager { get; set; } 
 

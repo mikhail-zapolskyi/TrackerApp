@@ -1,4 +1,5 @@
 ﻿using Project777.Models.Entities;
+using Project777.Models.ViewModels.JobCategories;
 using Project777.Models.ViewModels.Jobs;
 using Project777.Models.ViewModels.Users;
 using Project777.Repositories;
@@ -37,7 +38,6 @@ namespace Project777.Services
 
             _jobRepository.Create(jobEntity);
             await _jobRepository.SaveChangesAsync();
-
             var model = new JobVM()
             {
                 //JobId= createdJob.Id,
@@ -98,6 +98,33 @@ namespace Project777.Services
 
 
 
+        }
+
+        public async Task<ICollection<JobVM>>GetAllJobs()
+        {
+
+            var jobs =  await _jobRepository.GetAll();
+
+            List<JobVM> response = new List<JobVM>();
+
+            foreach (var job in jobs)
+            {
+
+                var model = new JobVM()
+                {
+                    JobId = job.Id,
+                    Company = job.Company,
+                    JobTitle = job.JobTitle,
+                    JobCategoryId = job.JobCategoryId,
+                    ClosingDate = job.ClosingDate,
+                    HiringManager = job.HiringManager,
+                    Referrer = job.Referrer,
+                    Notes = job.Notes,
+                    CreatedAt = job.CreatedAt,
+                };
+                response.Add(model);
+            }
+            return response;
         }
     }
 }
